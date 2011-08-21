@@ -16,7 +16,7 @@ Config.php:
 	// sqlite config
 	// $dbOptions = array (
 	// 	'dbType' => 'sqlite',
-	// 	'dbPath' => ROOT_PATH.'/var/sqlite',
+	// 	'dbPath' => '/yourpath/sqlitedir',
 	// );
 	
 
