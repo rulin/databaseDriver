@@ -1,6 +1,6 @@
 Cross databases connector for php, support: mysql, mysqli, sqlite, postgre
 
-use exsample
+Example:
 
 Config.php:
 
