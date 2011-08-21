@@ -1,1 +1,50 @@
 Cross databases connector for php, support: mysql, mysqli, sqlite, postgre
+
+use exsample
+
+Config.php:
+
+	// mysql config
+	$dbOptions = array (
+		'dbType' => 'mysql',
+		'dbHost' => 'localhost',
+		'dbName' => 'yourdb',
+		'dbUser' => 'root',
+		'dbPass' => 'yourpass',
+	);
+
+	// sqlite config
+	// $dbOptions = array (
+	// 	'dbType' => 'sqlite',
+	// 	'dbPath' => ROOT_PATH.'/var/sqlite',
+	// );
+	
+
+	$databaseDriver = databaseDriver::getInstance(0, $dbOptions);
+	$databaseDriver->dbConnect();
+	$databaseDriver->dbSelectDatabase();
+
+Users.php:
+	
+	class users {
+		
+		protected $db;
+
+		function __construct() {
+			$db = databaseDriver::getInstance();			
+		}
+		
+		function getUserList() {
+			$db->dbQuery('SELECT * FROM users');
+			
+			while ($data = $db->dbFetch) {
+				echo "UserName: ".$data['username']."\n";
+				echo "Email: ".$data['email']."\n\n";
+			}			
+		}
+		
+	}
+	
+	$users = new users();
+	$users->getUserList();
+
