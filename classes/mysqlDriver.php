@@ -20,7 +20,7 @@ class mysqlDriver extends aDatabaseDriver implements iDatabaseDriver {
 			if (isset($dbOptions['dbName']))
 				$this->dbName = $dbOptions['dbName'];
 		} else			
-			throw new Exception('The connection to the database are incorrect'); // MESSAGE_RU: Параметры подключения к базе данных указанны неверно
+			throw new Exception('The connection to the database are incorrect'); // MESSAGE_RU: РџР°СЂР°РјРµС‚СЂС‹ РїРѕРґРєР»СЋС‡РµРЅРёСЏ Рє Р±Р°Р·Рµ РґР°РЅРЅС‹С… СѓРєР°Р·Р°РЅРЅС‹ РЅРµРІРµСЂРЅРѕ
 	}
 	
 	public function __distruct () {
@@ -37,7 +37,7 @@ class mysqlDriver extends aDatabaseDriver implements iDatabaseDriver {
 			get_resource_type($this->dbHandle) == 'mysql link')
 			return($this->dbHandle);
 		else
-			throw new Exception('Unable to connect to the database : '.$this->dbErrnoError()); // MESSAGE_RU: Не удалось подключиться к базе данных
+			throw new Exception('Unable to connect to the database : '.$this->dbErrnoError()); // MESSAGE_RU: РќРµ СѓРґР°Р»РѕСЃСЊ РїРѕРґРєР»СЋС‡РёС‚СЊСЃСЏ Рє Р±Р°Р·Рµ РґР°РЅРЅС‹С…
 	}
 		
 	public function dbSelectDatabase (/*string*/ $dbName = false) {
@@ -45,26 +45,26 @@ class mysqlDriver extends aDatabaseDriver implements iDatabaseDriver {
 			$dbName = $this->dbName;
 		
 		if (!mysql_select_db($dbName, $this->dbHandle))
-			throw new Exception('Unable to select database : '.$this->dbErrnoError()); // MESSAGE_RU: Не Удалось выбрать базу данных		
+			throw new Exception('Unable to select database : '.$this->dbErrnoError()); // MESSAGE_RU: РќРµ РЈРґР°Р»РѕСЃСЊ РІС‹Р±СЂР°С‚СЊ Р±Р°Р·Сѓ РґР°РЅРЅС‹С…		
 	}
 	
 	public function dbQuery (/*string*/ $sqlQuery) {
 		if ($result = mysql_query($sqlQuery, $this->dbHandle) === false)
-			throw new Exception('Unable to query the database : '.$this->dbErrnoError()); // MESSAGE_RU: Не удалось выполнить запрос к базе данных
+			throw new Exception('Unable to query the database : '.$this->dbErrnoError()); // MESSAGE_RU: РќРµ СѓРґР°Р»РѕСЃСЊ РІС‹РїРѕР»РЅРёС‚СЊ Р·Р°РїСЂРѕСЃ Рє Р±Р°Р·Рµ РґР°РЅРЅС‹С…
 		else
 			return($result);			 		
 	}
 	
 	public function dbNumRows (/*resouce*/ &$result) {
 		if ($numRows = mysql_num_rows($result, $this->dbHandle) === false)
-			throw new Exception('Unable to get number of rows : '.$this->dbErrnoError()); // MESSAGE_RU: Не удалось получить количество строк
+			throw new Exception('Unable to get number of rows : '.$this->dbErrnoError()); // MESSAGE_RU: РќРµ СѓРґР°Р»РѕСЃСЊ РїРѕР»СѓС‡РёС‚СЊ РєРѕР»РёС‡РµСЃС‚РІРѕ СЃС‚СЂРѕРє
 		else
 			return($numRows);
 	}
 	
 	public function dbNumFields (/*resouce*/ &$result) {
 		if ($numFields  = mysql_num_fields($result, $this->dbHandle) === false)
-			throw new Exception('Unable to get number of fields : '.$this->dbErrnoError()); // MESSAGE_RU: Не удалось получить количество полей
+			throw new Exception('Unable to get number of fields : '.$this->dbErrnoError()); // MESSAGE_RU: РќРµ СѓРґР°Р»РѕСЃСЊ РїРѕР»СѓС‡РёС‚СЊ РєРѕР»РёС‡РµСЃС‚РІРѕ РїРѕР»РµР№
 		else
 			return($numFields);
 	}

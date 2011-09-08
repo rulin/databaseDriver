@@ -22,8 +22,8 @@ class databaseDriver {
 				$dbTypeDriver = $dbType.'Driver';
 				return(self::$instances[$instanceKey] = new $dbTypeDriver($dbOptions));				
 			} else
-				throw new Exception('This type of database is not supported'); // MESSAGE_RU: Данный тип базы данных не поддерживается						
+				throw new Exception('This type of database is not supported'); // MESSAGE_RU: Р”Р°РЅРЅС‹Р№ С‚РёРї Р±Р°Р·С‹ РґР°РЅРЅС‹С… РЅРµ РїРѕРґРґРµСЂР¶РёРІР°РµС‚СЃСЏ						
 		} else 
-			throw new Exception('Instance key '.$instanceKey.' is not defined'); // MESSAGE_RU: Экземпляр номером № не определен
+			throw new Exception('Instance key '.$instanceKey.' is not defined'); // MESSAGE_RU: Р­РєР·РµРјРїР»СЏСЂ РЅРѕРјРµСЂРѕРј в„– РЅРµ РѕРїСЂРµРґРµР»РµРЅ
 	} 
 }
