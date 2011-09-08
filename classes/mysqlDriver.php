@@ -48,22 +48,22 @@ class mysqlDriver extends aDatabaseDriver implements iDatabaseDriver {
 			throw new Exception('Unable to select database : '.$this->dbErrnoError()); // MESSAGE_RU: Не Удалось выбрать базу данных		
 	}
 	
-	public function dbQuery (/*string*/ $sqlQuery) {
-		if ($result = mysql_query($sqlQuery, $this->dbHandle) === false)
+	public function &dbQuery(/*string*/ $sqlQuery) {
+		if (($result = mysql_query($sqlQuery, $this->dbHandle)) === false)
 			throw new Exception('Unable to query the database : '.$this->dbErrnoError()); // MESSAGE_RU: Не удалось выполнить запрос к базе данных
 		else
 			return($result);			 		
 	}
 	
 	public function dbNumRows (/*resouce*/ &$result) {
-		if ($numRows = mysql_num_rows($result, $this->dbHandle) === false)
+		if (($numRows = mysql_num_rows($result)) === false)
 			throw new Exception('Unable to get number of rows : '.$this->dbErrnoError()); // MESSAGE_RU: Не удалось получить количество строк
 		else
 			return($numRows);
 	}
 	
 	public function dbNumFields (/*resouce*/ &$result) {
-		if ($numFields  = mysql_num_fields($result, $this->dbHandle) === false)
+		if (($numFields = mysql_num_fields($result)) === false)		
 			throw new Exception('Unable to get number of fields : '.$this->dbErrnoError()); // MESSAGE_RU: Не удалось получить количество полей
 		else
 			return($numFields);
@@ -82,11 +82,11 @@ class mysqlDriver extends aDatabaseDriver implements iDatabaseDriver {
 	}
 	
 	public function dbAffectedRows () {
-		return(mysql_affected_rows($result));
+		return(mysql_affected_rows($this->dbHandle));		
 	}
 	
 	public function dbLastInsertId () {
-		return(mysql_insert_id($result));	
+		return(mysql_insert_id($this->dbHandle));
 	}
 	
 	public function dbEscapeString (/*string*/ $string) {

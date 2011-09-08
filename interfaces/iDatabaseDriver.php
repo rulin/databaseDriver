@@ -5,7 +5,7 @@ interface iDatabaseDriver {
 	public function __construct (array $dbOptions);
 	public function dbConnect ();
 	public function dbSelectDatabase (/*string*/ $dbName = false);
-	public function dbQuery (/*string*/ $sqlQuery);
+	public function &dbQuery (/*string*/ $sqlQuery);
 	public function dbNumRows (/*resouce*/ &$result);
 	public function dbNumFields (/*resouce*/ &$result);
 	//Default fetch array assoc
